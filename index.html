@@ -4,16 +4,20 @@
   </head>
   <body>
     <a-scene>
+      <a-assets>
+        <a-audio id="meow" src="meow.ogg" preload="auto"></a-audio>
+      </a-assets>
       <a-sky id="sky" color="powderblue"></a-sky>
-      <a-camera position="0 0 3"></a-camera>
-      <a-text id="title" value="cat meow" position="-0.9 1 -1" scale="1.5 4.5 1.5" color="#000ff0"></a-text>
+
+
+      <a-text id="title" value="cat meow" position="-0.9 1 -1" scale="1.5 4.5 1.5" color="midnightblue"></a-text>
 
       <a-entity id="lightSphere" position="-7 4 -2" geometry="primitive: sphere; radius: .5" material="color: lightyellow; shader: flat" light="color: #ffffff; type: ambient; intensity: 1.3"></a-entity>
 
       <a-entity id="plane" geometry="primitive: plane; width: 11; height: 11" position="0 0 0 -4" rotation="-90 0 0"  material="color: lightslategrey"></a-entity>
       <a-torus id="bush" rotation="90 0 0" position="0 0.6 0" color="lightslategrey" radius-tubular="0.5" radius="5.9" shader="flat"></a-torus>
 
-      <a-entity id="cat" position="1 0.5 -0.5" rotation="0 90 0">
+      <a-entity id="cat" position="1 0.48 -0.5" rotation="0 90 0" sound="src: #meow; autoplay: true; loop: true">
         <a-sphere position="0 0.4 -0.5" radius="0.3" color="indianred" scale="1 0.8 0.8" shader="flat">
           <a-cone position="0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 -14" shader="flat"></a-cone>
           <a-cone position="-0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 14" shader="flat"></a-cone>
