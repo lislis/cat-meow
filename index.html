@@ -4,26 +4,27 @@
   </head>
   <body>
     <a-scene>
-      <a-sky id="sky" color="cornflowerblue"></a-sky>
+      <a-sky id="sky" color="powderblue"></a-sky>
       <a-camera position="0 0 3"></a-camera>
       <a-text id="title" value="cat meow" position="-0.9 1 -1" scale="1.5 4.5 1.5" color="#000ff0"></a-text>
 
-      <a-entity id="lightSphere" position="-1.7 2.6 -2" geometry="primitive: sphere; radius: .5" material="color: red; shader: flat" light="color: #fbc0c4; type: point; intensity: 2.0"></a-entity>
+      <a-entity id="lightSphere" position="-7 4 -2" geometry="primitive: sphere; radius: .5" material="color: lightyellow; shader: flat" light="color: #ffffff; type: ambient; intensity: 1.3"></a-entity>
 
-      <a-entity id="plane" geometry="primitive: plane; width: 4; height: 4" position="0 0 0 -4" rotation="-90 0 0"  material="color: #00ff00"></a-entity>
-      <!--<a-entity geometry="primitive: sphere; width: 5; height: 5" position="0.1 0.3 -3" material="shader: flat; color: #0000ff; side: double" scale="2.5 2.5 2.5"></a-entity>-->
+      <a-entity id="plane" geometry="primitive: plane; width: 11; height: 11" position="0 0 0 -4" rotation="-90 0 0"  material="color: lightslategrey"></a-entity>
+      <a-torus id="bush" rotation="90 0 0" position="0 0.6 0" color="lightslategrey" radius-tubular="0.5" radius="5.9" shader="flat"></a-torus>
 
       <a-entity id="cat" position="1 0.5 -0.5" rotation="0 90 0">
-        <a-sphere position="0 0.4 -0.5" radius="0.3" color="crimson" scale="1 0.8 0.8">
-          <a-cone position="0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="crimson" rotation="0 0 -14"></a-cone>
-          <a-cone position="-0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="crimson" rotation="0 0 14"></a-cone>
+        <a-sphere position="0 0.4 -0.5" radius="0.3" color="indianred" scale="1 0.8 0.8" shader="flat">
+          <a-cone position="0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 -14" shader="flat"></a-cone>
+          <a-cone position="-0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 14" shader="flat"></a-cone>
+
         </a-sphere>
-        <a-cylinder position="0 0.04 0" color="crimson" height="0.8" radius=".3" rotation="-90 0 0" scale="1 1 0.8">
-          <a-cone position="-0.14 0.246 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
-          <a-cone position="0.14 0.246 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
-          <a-cone position="-0.14 -0.29 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
-          <a-cone position="0.14 -0.29 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
-          <a-torus position="-0.014 -0.97 0.242" rotation="0 -70 0" radius="0.58" radius-tubular="0.02" arc="90" color="crimson"></a-torus>
+        <a-cylinder position="0 0.04 0" color="indianred" height="0.8" radius=".3" rotation="-90 0 0" scale="1 1 0.8" shader="flat">
+          <a-cone position="-0.14 0.246 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="indianred" shader="flat"></a-cone>
+          <a-cone position="0.14 0.246 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="indianred" shader="flat"></a-cone>
+          <a-cone position="-0.14 -0.29 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="indianred" shader="flat"></a-cone>
+          <a-cone position="0.14 -0.29 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="indianred" shader="flat"></a-cone>
+          <a-torus position="-0.014 -0.97 0.242" rotation="0 -70 0" radius="0.58" radius-tubular="0.02" arc="90" color="indianred" shader="flat"></a-torus>
         </a-cylinder>
 
       </a-entity>
