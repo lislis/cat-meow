@@ -14,8 +14,17 @@
       <!--<a-entity geometry="primitive: sphere; width: 5; height: 5" position="0.1 0.3 -3" material="shader: flat; color: #0000ff; side: double" scale="2.5 2.5 2.5"></a-entity>-->
 
       <a-entity id="cat" position="1 0.5 -0.5" rotation="0 90 0">
-        <a-sphere position="0 0.4 -0.5" radius="0.3" color="crimson"></a-sphere>
-        <a-cylinder position="0 0 0" color="crimson" height="0.8" radius=".3" rotation="-90 0 0"></a-cylinder>
+        <a-sphere position="0 0.4 -0.5" radius="0.3" color="crimson" scale="1 0.8 0.8">
+          <a-cone position="0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="crimson" rotation="0 0 -14"></a-cone>
+          <a-cone position="-0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="crimson" rotation="0 0 14"></a-cone>
+        </a-sphere>
+        <a-cylinder position="0 0.04 0" color="crimson" height="0.8" radius=".3" rotation="-90 0 0" scale="1 1 0.8">
+          <a-cone position="-0.14 0.246 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
+          <a-cone position="0.14 0.246 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
+          <a-cone position="-0.14 -0.29 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
+          <a-cone position="0.14 -0.29 -0.4" radius-bottom="0.11" radius-top="0.05" height=".5" rotation="-90 0 0" color="crimson"></a-cone>
+          <a-torus position="-0.014 -0.97 0.242" rotation="0 -70 0" radius="0.58" radius-tubular="0.02" arc="90" color="crimson"></a-torus>
+        </a-cylinder>
 
       </a-entity>
     </a-scene>
