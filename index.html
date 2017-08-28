@@ -68,7 +68,7 @@
 
       <a-entity id="cat-wrapper" position="0 0 0" rotation="0 90 0" random-radius>
         <a-entity cursor-listener collider-check class="collidable" id="cat" position="3 0.48 0" rotation="0 90 0" sound="src: #meow; autoplay: true; loop: true, poolSize: 1, volume: 3">
-          <a-animation attribute="position" to="1.2 0.48 0" begin="raycaster-intersected" dur="2000" animationend="end-game"></a-animation>
+          <a-animation attribute="position" to="1.2 0.48 0" begin="raycaster-intersected" dur="2000" delay="2000" animationend="end-game"></a-animation>
           <a-sphere id="cat-head" position="0 0.4 -0.5" radius="0.3" color="indianred" scale="1 0.8 0.8" shader="flat">
             <a-cone position="0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 -14" shader="flat"></a-cone>
             <a-cone position="-0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 14" shader="flat"></a-cone>
