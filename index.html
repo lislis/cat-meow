@@ -5,13 +5,33 @@
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
     
     <script>
+
+     var gameState = 'play';
+
      AFRAME.registerComponent('cursor-listener', {
        init: function () {
          this.el.addEventListener('click', function (evt) {
-           var catmation = document.querySelector('#cat');
-           cat.components.sound.stopSound();
-           cat.setAttribute('visible', false);
-           console.log('I was clicked at: ', evt.detail.intersection.point);
+           if (gameState !== 'over') {
+             gameState = 'over';
+             var cat = document.querySelector('#cat');
+             var camera = document.querySelector('#camera');
+             var cursor = document.querySelector('#cursor');
+             cat.components.sound.stopSound();
+
+             var el = document.createElement('a-entity');             
+             el.setAttribute('position', cursor.getAttribute('position'));
+             el.setAttribute('rotation', cursor.getAttribute('rotation'));
+             el.setAttribute('scale', '1.4 1.4 1.4');
+             el.setAttribute('text', { color: 'midnightblue', value: 'You found the cat. Stare to restart.', align: 'center', wrapCount: '18'});
+             el.setAttribute('id', 'end-screen');
+             el.setAttribute('cursor-listener');
+             camera.appendChild(el);
+             cursor.setAttribute('visible', false);
+           } else {
+             setTimeout(function () {
+               window.location.reload();
+             }, 1000);
+           }
          });
        }
      });
@@ -20,12 +40,16 @@
        dependencies: ['raycaster'],
        init: function () {
          this.el.addEventListener('raycaster-intersected', function (ev) {
-           var cat = document.querySelector('#cat');
-           cat.setAttribute('sound', { volume: 10 });
+           if (gameState === 'play') {
+             var cat = document.querySelector('#cat');
+             cat.setAttribute('sound', { volume: 10 });
+           }
          });
          this.el.addEventListener('raycaster-intersected-cleared', function (ev) {
-           var cat = document.querySelector('#cat');
-           cat.setAttribute('sound', { volume: 3 });
+           if (gameState === 'play') {
+             var cat = document.querySelector('#cat');
+             cat.setAttribute('sound', { volume: 3 });
+           }
          });
        }
      });
@@ -38,10 +62,6 @@
        }
      });
 
-     window.addEventListener('end-game', function (evt) {
-       console.log('END GAME');
-     });
-
     </script>
   </head>
   <body>
@@ -51,10 +71,9 @@
       </a-assets>
       <a-sky id="sky" color="powderblue"></a-sky>
 
-      <a-entity camera="userHeight: 1.6" look-controls rotation="0 0 0" >
-        <a-entity raycaster="objects: .collidable; showLine: true; far: 100" line="color: orange" position="0 -0.9 0" rotation="0 0 0"></a-entity>
-        <a-entity  cursor="fuse: true; fuseTimeout: 300"
-                   position="0 0 -1"
+      <a-entity id="camera" camera="userHeight: 1.6" look-controls rotation="0 0 0" >
+        <a-entity  id="cursor" cursor="fuse: true; fuseTimeout: 300"
+                   position="0 0 -0.8"
                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                    material="color: black; shader: flat">
         </a-entity>
@@ -69,7 +88,7 @@
 
       <a-entity id="cat-wrapper" position="0 0 0" rotation="0 90 0" random-radius>
         <a-entity cursor-listener collider-check class="collidable" id="cat" position="3 0.48 0" rotation="0 90 0" sound="src: #meow; autoplay: true; loop: true, poolSize: 1, volume: 3">
-          <a-animation attribute="position" to="1.2 0.48 0" begin="raycaster-intersected" dur="2000" delay="2000" animationend="end-game"></a-animation>
+          <a-animation attribute="position" to="1.3 0.48 0" begin="raycaster-intersected" dur="2000" delay="2000" fill="forward"></a-animation>
           <a-sphere id="cat-head" position="0 0.4 -0.5" radius="0.3" color="indianred" scale="1 0.8 0.8" shader="flat">
             <a-cone position="0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 -14" shader="flat"></a-cone>
             <a-cone position="-0.2 0.3 0" height="0.3"  radius-bottom="0.1" radius-top="0" color="indianred" rotation="0 0 14" shader="flat"></a-cone>
